@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<StreamList />} />
+          <Route path="/" element={StreamList()} />
           <Route path="/stream/new" element={<StreamCreate />} />
           <Route path="/stream/edit" element={<StreamEdit />} />
           <Route path="/stream/delete" element={<StreamDelete />} />
