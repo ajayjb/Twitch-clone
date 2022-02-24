@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import { createStream } from "../Actions";
+import { connect } from "react-redux";
 
 class StreamCreate extends Component {
   // For showing errror message
   renderErr = (touched, err) => {
     if (touched && err) {
       return (
-        <div className="ui error message">
-          <div className="header">{err}</div>
+        <div>
+          <div style={{ color: "#EF6D6D" }}>{err}</div>
         </div>
       );
     }
@@ -26,7 +28,8 @@ class StreamCreate extends Component {
 
   render() {
     const onSubmitHandler = (formValues) => {
-      console.log(formValues);
+      // Sending the data to backend server that is json server
+      this.props.createStream(formValues);
     };
     return (
       // On form submit we have to call handleSubmit function provided by redux form, here we can work with onSubmit event Listner as we did earlier, so this handleSubmit takes a callback, that function will be called as soon as we submit the form, with the arguments are form values, which are actual value that are stored in the redux store. in this callback we can call to outside API and so on.
@@ -65,5 +68,7 @@ const validate = (formValues) => {
 // Returns a function
 const createReduxForm = reduxForm({ form: "StreamCreate", validate });
 
+const createConnect = connect(null, { createStream });
+
 // The react componet always called with the above function returned.
-export default createReduxForm(StreamCreate);
+export default createConnect(createReduxForm(StreamCreate));
