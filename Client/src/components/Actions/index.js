@@ -12,10 +12,18 @@ const signOut = () => {
 
 // Action creater for creating stream.
 const createStream = (formValues) => {
-  return async (dispatch) => {
-    const res = await streams.post("/streams", formValues);
-    console.log(res.data);
-    dispatch({ type: "CREATE_STREAM", payload: res.data });
+  return async (dispatch, getState) => {
+    const { userId } = getState().authState;
+    try {
+      const res = await streams.post("/streams", {
+        ...formValues,
+        userId: userId,
+      });
+      dispatch({ type: "CREATE_STREAM", payload: res.data });
+      window.location.href = "/";
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 

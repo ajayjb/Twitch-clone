@@ -13,11 +13,11 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={StreamList()} />
+          <Route path="/" element={<StreamList />} />
           <Route path="/stream/new" element={<StreamCreate />} />
-          <Route path="/stream/edit" element={<StreamEdit />} />
-          <Route path="/stream/delete" element={<StreamDelete />} />
-          <Route path="/stream/show" element={<StreamShow />} />
+          <Route path="/stream/edit/:id" element={<StreamEdit />} />
+          <Route path="/stream/delete/:id" element={<StreamDelete />} />
+          <Route path="/streams/:id" element={<StreamShow />} />
         </Routes>
       </Router>
     </div>
@@ -25,3 +25,5 @@ function App() {
 }
 
 export default App;
+
+// History is object created by BrowserRouter, whenever we change the path name in history object some changes related to path will happen, so when this thing happen BrowserRouter will listen to it it tells Routes components to swith to correct route. this is the history object created by BrowserRouter. Lets say if the want to programmatically switch to different route, in that case the way is to create your own history object as illustrated above.

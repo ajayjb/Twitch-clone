@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
-import { createStream } from "../Actions";
-import { connect } from "react-redux";
 
-class StreamCreate extends Component {
+class StreamForm extends Component {
   // For showing errror message
   renderErr = (touched, err) => {
     if (touched && err) {
@@ -29,8 +27,7 @@ class StreamCreate extends Component {
   render() {
     const onSubmitHandler = (formValues) => {
       // Sending the data to backend server that is json server, calling action creater.
-      this.props.createStream(formValues);
-      window.location.href = "/";
+      this.props.onSubmit(formValues);
     };
     return (
       // On form submit we have to call handleSubmit function provided by redux form, here we can work with onSubmit event Listner as we did earlier, so this handleSubmit takes a callback, that function will be called as soon as we submit the form, with the arguments are form values, which are actual value that are stored in the redux store. in this callback we can call to outside API and so on.
@@ -67,9 +64,7 @@ const validate = (formValues) => {
 // here value for form key has to be unique, beacuse all tha data related this form will be stored under this name.
 
 // Returns a function
-const createReduxForm = reduxForm({ form: "StreamCreate", validate });
-
-const createConnect = connect(null, { createStream });
+const createReduxForm = reduxForm({ form: "StreamForm", validate });
 
 // The react componet always called with the above function returned.
-export default createConnect(createReduxForm(StreamCreate));
+export default createReduxForm(StreamForm);

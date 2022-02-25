@@ -30,7 +30,7 @@ const streamReducer = (stream = {}, action) => {
       return { ...stream, [action.payload.id]: action.payload };
     case "DELETE_STREAM":
       return _.omit(stream, action.payload);
-    case "FETCH_STREAMs":
+    case "FETCH_STREAMS":
       // Or you can do same using _ library.
       // return {...streams, ..._mapKeys(stream, "id")} and you must pass id as string
       let newState = { ...stream };
