@@ -31,7 +31,11 @@ function StreamList(props) {
             Edit
           </Link>
         </button>
-        <button className="ui red button negetive">Delete</button>
+        <button className="ui red button negetive">
+          <Link style={{ color: "white" }} to={`stream/delete/${id}`}>
+            Delete
+          </Link>
+        </button>
       </div>
     );
   }

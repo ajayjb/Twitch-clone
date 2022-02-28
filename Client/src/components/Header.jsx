@@ -15,7 +15,7 @@ export default function Header() {
           style={{ color: "#D1D1D1", fontWeight: "600" }}
           className="item"
         >
-          Streams
+          Twitch Clone
         </Link>
         <div className="item" style={{ color: "#D1D1D1", fontWeight: "600" }}>
           <GoogleAuth />

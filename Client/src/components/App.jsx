@@ -26,4 +26,6 @@ function App() {
 
 export default App;
 
-// History is object created by BrowserRouter, whenever we change the path name in history object some changes related to path will happen, so when this thing happen BrowserRouter will listen to it it tells Routes components to swith to correct route. this is the history object created by BrowserRouter. Lets say if the want to programmatically switch to different route, in that case the way is to create your own history object as illustrated above.
+// In path anything you put after : will be considered as variable.
+
+// History is object created by BrowserRouter, whenever we change the path name in history object some changes related to path will happen, so when this thing happen BrowserRouter will listen to it it tells Routes components to swith to correct route. this is the history object created by BrowserRouter. Lets say if the want to programmatically switch to different route, in that case the way is to create your own history object as illustrated above. (This feature is deprecated in react-router-dom v6.)

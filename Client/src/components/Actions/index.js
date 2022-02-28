@@ -38,8 +38,12 @@ const fetchStreams = () => {
 // Action creater for fetching particular stream with id.
 const fetchStream = (id) => {
   return async (dispatch) => {
-    const res = await streams.get(`/streams/${id}`);
-    dispatch({ type: "FETCH_STREAM", payload: res.data });
+    try {
+      const res = await streams.get(`/streams/${id}`);
+      dispatch({ type: "FETCH_STREAM", payload: res.data });
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 
@@ -48,14 +52,16 @@ const deleteStream = (id) => {
   return async (dispatch) => {
     await streams.delete(`/streams/${id}`);
     dispatch({ type: "DELETE_STREAM", payload: id });
+    window.location.href = "/";
   };
 };
 
 // Action creater for editing a stream
 const editStream = (id, values) => {
   return async (dispatch) => {
-    const res = await streams.put(`/streams/${id}`, values);
+    const res = await streams.patch(`/streams/${id}`, values);
     dispatch({ type: "EDIT_STREAM", payload: res.data });
+    window.location.href = "/";
   };
 };
 
